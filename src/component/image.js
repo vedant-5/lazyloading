@@ -52,10 +52,10 @@ const ImageComponent = ({ src, title, id }) => {
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
                 <Typography gutterBottom variant="subtitle1">
-                  {title}
+                  <span style={{fontWeight:"500", fontSize:"0.85rem"}}>Description:</span> {title}
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                  Profile ID: {id}
+                  <span style={{fontWeight:"500", fontSize:"0.85rem"}}>Profile ID:</span> {id}
                 </Typography>
               </Grid>
 

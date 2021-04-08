@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Container } from '@material-ui/core';
 import React, { useState, useEffect, Suspense } from 'react';
+import styled from "styled-components";
 
 
 import loading from '../images/loading.png';
@@ -52,18 +53,39 @@ const List = () => {
 
 	return (
 		<>
-		<Container>
-			{listItems.map((listItem) => (
-				<div style={{marginBottom:"20px"}} key={listItem.id}>
-					<Suspense fallback={<img src={loading} alt='Avatar' style={{ margin:"auto", width: '50%' }} />}>
-						<ImageComponent id={listItem.id} title={listItem.title} src={listItem.url} />
-					</Suspense>
-				</div>
-			))}
-			{isFetching && <h1>Loading More Profiles..</h1>}
-		</Container>
+		
+			<Container >
+			<Body>
+				<Title>Profiles</Title>
+				{listItems.map((listItem) => (
+					<div style={{marginBottom:"20px"}} key={listItem.id}>
+						<Suspense fallback={<img src={loading} alt='Avatar' style={{ margin:"auto", width: '50%' }} />}>
+							<ImageComponent id={listItem.id} title={listItem.title} src={listItem.url} />
+						</Suspense>
+					</div>
+				))}
+				{isFetching && <h1>Loading More Profiles..</h1>}
+				</Body>
+			</Container>
+		
 		</>
 	);
 };
 
 export default List;
+
+const Body = styled.div`
+	background-color: rgb(235,253,254);
+	border-radius: 10px;
+	box-shadow: -7px -4px 20px 0px rgba(0,0,0,0.08);
+	box-shadow: 7px 0px 20px 0px rgba(0,0,0,0.08);
+	width:70%;
+	margin:auto
+`
+
+const Title = styled.p`
+	margin-left: 20px;
+	text-align: center;
+	padding-top:10px;
+	font-size: 1.7rem;
+`
